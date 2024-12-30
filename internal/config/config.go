@@ -1,6 +1,8 @@
 package config
 
-import "github.com/ilyakaznacheev/cleanenv"
+import (
+	"github.com/ilyakaznacheev/cleanenv"
+)
 
 type Config struct {
 	Env string `env:"ENV" env-required:"true"`

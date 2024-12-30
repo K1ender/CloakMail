@@ -19,6 +19,11 @@ type Config struct {
 		User     string `env:"REDIS_USER" env-required:"true"`
 		Password string `env:"REDIS_PASSWORD" env-required:"true"`
 	}
+
+	HTTP struct {
+		Host string `env:"HTTP_HOST" env-required:"true"`
+		Port int    `env:"HTTP_PORT" env-required:"true"`
+	}
 }
 
 const (

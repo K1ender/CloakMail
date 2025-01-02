@@ -1,7 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"CloakMail/internal/config"
+	"CloakMail/internal/logger"
+	"CloakMail/internal/router"
+)
 
 func main() {
-	fmt.Println("Hello, World!")
+	config := config.MustInit()
+
+	logger := logger.Init(config)
+	logger.Info("Starting CloakMail...")
+
+	router.NewRouter(config, logger)
 }

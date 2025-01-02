@@ -1,0 +1,26 @@
+services:
+  app:
+    build: .
+    ports:
+      - ${HTTP_PORT}:${HTTP_PORT}
+    env_file:
+      - .env
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_DB=${DATABASE_NAME}
+    restart: always
+    shm_size: 128mb
+    ports:
+      - ${DATABASE_PORT}:5432
+  redis:
+    image: redis
+    restart: always
+    command:
+      - /bin/sh
+      - -c
+      - redis-server --requirepass "${REDIS_PASSWORD}"
+    ports:
+      - ${REDIS_PORT}:6379
